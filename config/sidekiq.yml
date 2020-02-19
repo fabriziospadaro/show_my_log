@@ -7,6 +7,6 @@
   - show_my_log
 
 :limits:
-  show_my_log_import: 100
+  show_my_log_import: 20
 :queues:
   - [show_my_log_import, 1]

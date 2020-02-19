@@ -1,6 +1,6 @@
 class FileProcessorJob
   include Sidekiq::Worker
-  sidekiq_options backtrace: true, retry: 10
+  sidekiq_options queue: :show_my_log_import, backtrace: true, retry: 10
 
   def perform(file_name, start, batch_size, processors)
     client = ElasticClient.new

@@ -34,6 +34,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.4.1'
 gem 'sidekiq'
+gem 'sidekiq-limit_fetch'
 gem "nokogiri", ">= 1.10.4"
 gem 'rb-readline'
 group :development, :test do
