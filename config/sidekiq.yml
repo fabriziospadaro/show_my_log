@@ -1,0 +1,35 @@
+---
+:verbose: false
+:pidfile: tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log
+:concurrency: 150
+:labels:
+  - ch4tableau
+
+:limits:
+  ch4tableau_cleanup: 1
+  ch4tableau_importers: 10
+  ch4tableau_hydration: 1
+  ch4tableau_hydration_job: 1
+  ch4tableau_services: 10
+  ch4tableau_schedulers: 4
+  ch4tableau_storers: 100
+  ch4tableau_jobs: 130
+  ch4tableau_importer_jobs: 60
+  ch4tableau_file_jobs: 130
+:queues:
+  - [ch4tableau_schedulers, 5]
+  - [ch4tableau_importers, 4]
+  - [ch4tableau_jobs, 4]
+  - [ch4tableau_importer_jobs,4]
+  - [ch4tableau_file_jobs, 4]
+  - [ch4tableau_spooler, 9]
+  - [ch4tableau_storers, 5]
+  - [ch4tableau_services, 7]
+  - [ch4tableau_hydration, 8]
+  - [ch4tableau_hydration_job, 6]
+  - [ch4tableau_hydration_runners, 6]
+  - [ch4tableau_hydration_workers, 7]
+  - [ch4tableau_default, 5]
+  #- [ch4tableau_backup, 1]
+  - [ch4tableau_cleanup, 1]
