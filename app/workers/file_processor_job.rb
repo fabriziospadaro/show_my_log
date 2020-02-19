@@ -10,10 +10,13 @@ class FileProcessorJob
         processors.each do |processor|
           attribute.merge!(send(:"process_line_#{processor.downcase}", line))
         end
-        id = (attribute["application"] + attribute["date"] + attribute["time"] + attribute["u"]).gsub!(/[^0-9A-Za-z]/, '')
-        client.perform_request("put", "show_my_log/create/#{id}", attribute)
-      rescue
+        id = (attribute["application"] + attribute["date"] + attribute["time"] + attribute["u"].to_s).gsub!(/[^0-9A-Za-z]/, '')
+      rescue => e
+        puts "*" * 10
+        puts "#{e.message}\n line: #{line}"
+        next
       end
+      client.perform_request("put", "show_my_log/create/#{id}", attribute)
     end
     p "Done writing #{batch_size} lines from line: #{start}"
   end
