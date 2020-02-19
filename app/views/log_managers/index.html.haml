@@ -1,0 +1,4 @@
+= form_tag({action: "process_file"},multipart: true)  do
+  = label_tag(:file, "File to process:")
+  = file_field_tag(:file, accept: 'text/csv')
+  = submit_tag("Import")
